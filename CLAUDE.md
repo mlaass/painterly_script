@@ -9,11 +9,22 @@ Painterly-script is a Python tool that procedurally "paints" images using brush 
 ## Commands
 
 ```bash
-# Run the main script
-uv run main.py
+# Run batch processing on all images in images/
+./run_all.sh
 
-# Run the painting script directly
-uv run python paint-img.py
+# Run with custom parameters
+./run_all.sh --brush-size 30 --num-strokes 5000
+
+# Run on a single image
+uv run python run_painter.py --input images/example.png --output output/result.png
+
+# All run_painter.py options
+uv run python run_painter.py --input FILE --output FILE \
+    --brush assets/brush_01.png \
+    --brush-size 25 \
+    --num-strokes 10000 \
+    --step-size 5 \
+    --threshold 0.95
 ```
 
 ## Architecture
@@ -38,6 +49,8 @@ uv run python paint-img.py
 
 - `assets/` - Brush texture PNGs (with alpha channel)
 - `images/` - Source/test images
+- `output/` - Generated painted images (created by run_all.sh)
+- `logs/` - Run logs with parameters (created by run_all.sh)
 - `docs/` - Project documentation and PRDs
 
 ## Dependencies
